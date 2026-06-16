@@ -1,0 +1,71 @@
+{% extends 'storefront/dashboard_base.html' %}
+
+{% block title %}Wichit2s - Marketing Management{% endblock %}
+
+{% block extra_css %}
+<style>
+    :root {
+        --primary-color: #673ab7; /* Purple for Marketing */
+    }
+</style>
+{% endblock %}
+
+{% block page_title %}ภาพรวมการตลาด (Marketing Dashboard){% endblock %}
+
+{% block content %}
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-title">แคมเปญที่กำลังใช้งาน</div>
+        <div class="stat-value">3 แคมเปญ</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-title">ยอดขายจากโปรโมชัน</div>
+        <div class="stat-value">฿125,400</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-title">การใช้โค้ดส่วนลด</div>
+        <div class="stat-value">842 ครั้ง</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-title">ลูกค้าใหม่ (เดือนนี้)</div>
+        <div class="stat-value">1,405 คน</div>
+    </div>
+</div>
+
+<div class="table-container">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin-top: 0;">แคมเปญโปรโมชัน</h3>
+        <button style="background: var(--primary-color); color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer;">+ สร้างแคมเปญใหม่</button>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>ชื่อแคมเปญ</th>
+                <th>ประเภท</th>
+                <th>ระยะเวลา</th>
+                <th>สถานะ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ลดทลายสต็อกกลางปี 6.6</td>
+                <td>Flash Sale</td>
+                <td>1 มิ.ย. - 10 มิ.ย. 2026</td>
+                <td><span style="background: #e8eaf6; color: #3f51b5; padding: 4px 8px; border-radius: 4px; font-size: 12px;">กำลังทำงาน</span></td>
+            </tr>
+            <tr>
+                <td>ลูกค้าใหม่ลด 50%</td>
+                <td>โค้ดส่วนลด (NEW50)</td>
+                <td>ตลอดปี</td>
+                <td><span style="background: #e8eaf6; color: #3f51b5; padding: 4px 8px; border-radius: 4px; font-size: 12px;">กำลังทำงาน</span></td>
+            </tr>
+            <tr>
+                <td>ส่งฟรีเมื่อซื้อครบ 500 บาท</td>
+                <td>โปรโมชันจัดส่ง</td>
+                <td>ตลอดปี</td>
+                <td><span style="background: #e8eaf6; color: #3f51b5; padding: 4px 8px; border-radius: 4px; font-size: 12px;">กำลังทำงาน</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

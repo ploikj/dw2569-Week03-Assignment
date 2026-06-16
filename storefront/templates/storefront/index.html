@@ -1,0 +1,45 @@
+{% extends 'storefront/base.html' %}
+
+{% block content %}
+<div class="container">
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <div class="banner">
+            <h2>โปรโมชันเด็ด ช้อปเลย!</h2>
+            <p>รับส่วนลดสูงสุด 50% วันนี้เท่านั้น</p>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <h3>หมวดหมู่</h3>
+        <div class="categories-grid">
+            {% for category in categories %}
+            <a href="?category={{ category.id }}" class="category-card" style="text-decoration:none; color:inherit; {% if current_category == category.id %}border: 1px solid var(--primary-color);{% endif %}">
+                <div class="category-icon">{{ category.icon }}</div>
+                <span>{{ category.name }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <h3>สินค้าแนะนำประจำวัน</h3>
+        <div class="products-grid">
+            {% for product in products %}
+            <a href="{% url 'product_detail' product.id %}" class="product-card">
+                <div class="product-image">
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-title">{{ product.name }}</h4>
+                    <div class="product-price">฿{{ product.price }}</div>
+                    <div class="product-sold">ขายแล้ว {{ product.sold }} ชิ้น</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

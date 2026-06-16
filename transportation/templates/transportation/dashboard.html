@@ -1,0 +1,75 @@
+{% extends 'storefront/dashboard_base.html' %}
+
+{% block title %}Wichit2s - Transportation Management{% endblock %}
+
+{% block extra_css %}
+<style>
+    :root {
+        --primary-color: #ff9800; /* Orange for Transportation */
+    }
+</style>
+{% endblock %}
+
+{% block page_title %}ภาพรวมระบบขนส่ง (Transportation Dashboard){% endblock %}
+
+{% block content %}
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-title">พัสดุเตรียมจัดส่ง</div>
+        <div class="stat-value">45 กล่อง</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-title">กำลังจัดส่ง</div>
+        <div class="stat-value">128 กล่อง</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-title">จัดส่งสำเร็จ (วันนี้)</div>
+        <div class="stat-value">86 กล่อง</div>
+    </div>
+    <div class="stat-card" style="border-top-color: #d32f2f;">
+        <div class="stat-title">ปัญหาการจัดส่ง</div>
+        <div class="stat-value" style="color: #d32f2f;">2 กล่อง</div>
+    </div>
+</div>
+
+<div class="table-container">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin-top: 0;">รายการจัดส่งวันนี้</h3>
+        <button style="background: var(--primary-color); color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer;">พิมพ์ใบจ่าหน้าทั้งหมด</button>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>เลขที่คำสั่งซื้อ</th>
+                <th>ผู้รับ</th>
+                <th>บริษัทขนส่ง</th>
+                <th>Tracking No.</th>
+                <th>สถานะ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ORD-20260601</td>
+                <td>คุณ สมชาย ใจดี</td>
+                <td>Kerry Express</td>
+                <td>KRY123456789</td>
+                <td><span style="background: #fff3e0; color: #e65100; padding: 4px 8px; border-radius: 4px; font-size: 12px;">กำลังจัดส่ง</span></td>
+            </tr>
+            <tr>
+                <td>ORD-20260602</td>
+                <td>คุณ สมหญิง งามยิ่ง</td>
+                <td>J&T Express</td>
+                <td>JT987654321</td>
+                <td><span style="background: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 4px; font-size: 12px;">จัดส่งสำเร็จ</span></td>
+            </tr>
+            <tr>
+                <td>ORD-20260603</td>
+                <td>คุณ มานี มีนา</td>
+                <td>Flash Express</td>
+                <td>- รอรับเข้าระบบ -</td>
+                <td><span style="background: #e3f2fd; color: #1565c0; padding: 4px 8px; border-radius: 4px; font-size: 12px;">เตรียมจัดส่ง</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

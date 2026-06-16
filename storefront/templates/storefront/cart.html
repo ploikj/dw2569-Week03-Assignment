@@ -1,0 +1,142 @@
+{% extends 'storefront/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>ตะกร้าสินค้าของคุณ</h2>
+    
+    {% if cart and cart.items.count > 0 %}
+    <div class="cart-container">
+        <div class="cart-items">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>สินค้า</th>
+                        <th>ราคาต่อชิ้น</th>
+                        <th>จำนวน</th>
+                        <th>ราคารวม</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart.items.all %}
+                    <tr>
+                        <td class="cart-product-info">
+                            <img src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                            <span>{{ item.product.name }}</span>
+                        </td>
+                        <td>฿{{ item.product.price }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td class="item-total">฿{{ item.total_price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="cart-summary">
+            <h3>สรุปคำสั่งซื้อ</h3>
+            <div class="summary-row">
+                <span>ยอดรวมทั้งหมด:</span>
+                <span class="total-price">฿{{ cart.total_price }}</span>
+            </div>
+            <form action="{% url 'checkout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn-checkout">ดำเนินการชำระเงิน</button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="empty-cart">
+        <p>ตะกร้าสินค้าของคุณยังว่างเปล่า</p>
+        <a href="{% url 'storefront_index' %}" class="btn-continue">กลับไปเลือกซื้อสินค้า</a>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+.cart-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+.cart-items {
+    flex: 3;
+    background: var(--white);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.cart-table th, .cart-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+.cart-product-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.cart-product-info img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.item-total {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.cart-summary {
+    flex: 1;
+    background: var(--white);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    height: fit-content;
+}
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    font-size: 18px;
+}
+.total-price {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 24px;
+}
+.btn-checkout {
+    width: 100%;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-checkout:hover {
+    background: var(--primary-hover);
+}
+.empty-cart {
+    text-align: center;
+    padding: 50px;
+    background: var(--white);
+    border-radius: 4px;
+    margin-top: 20px;
+}
+.btn-continue {
+    display: inline-block;
+    margin-top: 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+</style>
+{% endblock %}

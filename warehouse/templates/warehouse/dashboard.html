@@ -1,0 +1,75 @@
+{% extends 'storefront/dashboard_base.html' %}
+
+{% block title %}Wichit2s - Inventory Management{% endblock %}
+
+{% block extra_css %}
+<style>
+    :root {
+        --primary-color: #2e7d32; /* Green for Warehouse */
+    }
+</style>
+{% endblock %}
+
+{% block page_title %}ภาพรวมคลังสินค้า (Inventory Dashboard){% endblock %}
+
+{% block content %}
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-title">สินค้าทั้งหมดในคลัง</div>
+        <div class="stat-value">1,245 ชิ้น</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-title">หมวดหมู่สินค้า</div>
+        <div class="stat-value">8 หมวด</div>
+    </div>
+    <div class="stat-card" style="border-top-color: #d32f2f;">
+        <div class="stat-title">สินค้าใกล้หมดสต็อก</div>
+        <div class="stat-value" style="color: #d32f2f;">12 รายการ</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-title">มูลค่าคลังสินค้า</div>
+        <div class="stat-value">฿450,200</div>
+    </div>
+</div>
+
+<div class="table-container">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin-top: 0;">รายการสินค้าล่าสุด</h3>
+        <button style="background: var(--primary-color); color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer;">+ นำเข้าสินค้า</button>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>รหัสสินค้า</th>
+                <th>ชื่อสินค้า</th>
+                <th>หมวดหมู่</th>
+                <th>สต็อกคงเหลือ</th>
+                <th>สถานะ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>P-1001</td>
+                <td>หูฟังบลูทูธไร้สาย</td>
+                <td>มือถือและอุปกรณ์</td>
+                <td>100</td>
+                <td><span style="background: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 4px; font-size: 12px;">ปกติ</span></td>
+            </tr>
+            <tr>
+                <td>P-1002</td>
+                <td>สมาร์ทวอทช์</td>
+                <td>เครื่องใช้ไฟฟ้า</td>
+                <td>5</td>
+                <td><span style="background: #ffebee; color: #d32f2f; padding: 4px 8px; border-radius: 4px; font-size: 12px;">ใกล้หมดสต็อก</span></td>
+            </tr>
+            <tr>
+                <td>P-1003</td>
+                <td>เคสโทรศัพท์ซิลิโคนใส</td>
+                <td>มือถือและอุปกรณ์</td>
+                <td>500</td>
+                <td><span style="background: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 4px; font-size: 12px;">ปกติ</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
